@@ -8,7 +8,7 @@ public class Donation {
 	private Account account;
 	
 	public enum Status {
-		TRANSFERRED, IN_PROGRESS;
+		TRANSFERRED, IN_PROCESS;
 	}
 	
 	public Donation() {

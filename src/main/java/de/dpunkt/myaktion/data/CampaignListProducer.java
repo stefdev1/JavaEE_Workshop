@@ -38,7 +38,7 @@ public class CampaignListProducer implements Serializable{
 		donation2.setDonarName("Karl Meier");
 		donation2.setAmount(30d);
 		donation2.setReceiptRequested(false);
-		donation2.setStatus(Status.IN_PROGRESS);
+		donation2.setStatus(Status.IN_PROCESS);
 		donation2.setAccount(new Account(donation2.getDonarName(), "YYY Bank", "DE44864275310000654321"));
 		
 		List<Donation> spenden = new LinkedList<Donation>();
