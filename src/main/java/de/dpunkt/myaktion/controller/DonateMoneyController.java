@@ -16,6 +16,7 @@ public class DonateMoneyController implements Serializable{
 
 	private String textColor = "000000";
 	private String bgColor = "ffffff";
+	private String title = "Geld-Spende"; 
 	private Long campaignId;
 	private Donation donation;
 	
@@ -37,6 +38,14 @@ public class DonateMoneyController implements Serializable{
 
 	public void setBgColor(String bgColor) {
 		this.bgColor = bgColor;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public Long getCampaignId() {

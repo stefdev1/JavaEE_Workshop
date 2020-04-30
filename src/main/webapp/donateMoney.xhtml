@@ -4,7 +4,7 @@
 	  xmlns:f="http://xmlns.jcp.org/jsf/core"
 	  xmlns:p="http://primefaces.org/ui">
 	<h:head>
-		<title>#{msg['donateMoney.donate_money']}</title>
+		<title>#{donateMoneyController.title}</title>
 		<meta charset="utf-8" />
 		<f:metadata>
 			<f:viewParam name="bgColor" id="bgColor" value="#{donateMoneyController.bgColor}">
@@ -15,6 +15,7 @@
 			</f:viewParam>
 			<f:viewParam name="campaignId" id="campaignId" converter="javax.faces.Long" value="#{donateMoneyController.campaignId}">
 			</f:viewParam>
+			<f:viewParam name="title" id="title" value="#{donateMoneyController.title}"></f:viewParam>
 		</f:metadata>
 	</h:head>
 	<h:body style="margin: 0;
@@ -22,7 +23,7 @@
 				font-size: 0.9em;
 				background-color: ##{donateMoneyController.bgColor};
 				color: ##{donateMoneyController.textColor}" >
-		<h1>#{msg['donateMoney.donate_money']}:</h1>
+		<h1>#{donateMoneyController.title}:</h1>
 		<p:messages globalOnly="true" />
 		<p:message for="bgColor" style="color: red;" />
 		<p:message for="textColor" style="color: red;" />

@@ -12,10 +12,12 @@
 					<h:form>
 						<h:panelGrid columns="2">
 							<h:outputLabel value="#{msg['editDonationForm.background_color']}:" />
-							<p:colorPicker id="bgColor" value="#{editDonationFormController.bgColor}" widgetVar="bgPicker" ></p:colorPicker>
+							<p:colorPicker id="bgColor" value="#{editDonationFormController.formConfig.bgColor}" widgetVar="bgPicker" ></p:colorPicker>
 							<h:outputLabel value="#{msg['editDonationForm.text_color']}:" />
-							<p:colorPicker id="textColor" value="#{editDonationFormController.textColor}" widgetVar="textPicker">
+							<p:colorPicker id="textColor" value="#{editDonationFormController.formConfig.textColor}" widgetVar="textPicker">
 							</p:colorPicker>
+							<h:outputLabel value="#{msg['editDonationForm.title']}:" />
+							<p:inputText id="title" value="#{editDonationFormController.formConfig.title}" />
 							<h:outputLabel value="#{msg['editDonationForm.form_url']}:" />
 							<p:inputTextarea id="url" rows="6" cols="30" readonly="true" value="#{editDonationFormController.url}" />
 						</h:panelGrid>
