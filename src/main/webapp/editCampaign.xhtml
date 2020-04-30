@@ -19,8 +19,8 @@
 								<p:inputText id="a_name" 
 											 value="#{campaignProducer.selectedCampaign.name}"
 											 validatorMessage="#{msg['editCampaign.campaign_name_validation']}"
+											 placeholder="#{msg['editCampaign.name_of_the_campaign']}"
 											 >
-									<f:passThroughAttribute name="placeholder" value="#{msg['editCampaign.name_of_the_campaign']}"/>
 									<f:validateRequired/>
 									<f:validateLength minimum="4" maximum="30" />
 								</p:inputText>
@@ -30,7 +30,8 @@
 								<h:panelGroup>
 									<p:inputText id="a_targetAmount"
 												 value="#{campaignProducer.selectedCampaign.targetAmount}"
-												 validatorMessage="#{msg['editCampaign.target_amount_validation']}">
+												 validatorMessage="#{msg['editCampaign.target_amount_validation']}"
+												 placeholder="#{msg['editCampaign.target_amount_text']}">
 										<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
 										<f:validateRequired />
 										<f:validateDoubleRange minimum="10.0" />
@@ -42,7 +43,9 @@
 								<h:panelGroup>
 									<p:inputText id="a_donationMinimum"
 												 value="#{campaignProducer.selectedCampaign.donationMinimum}"
-												 validatorMessage="#{msg['editCampaign.donation_amount_validation']}">
+												 validatorMessage="#{msg['editCampaign.donation_amount_validation']}"
+												 placeholder="#{msg['editCampaign.donation_minimum_amount']}"
+												 >
 										<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
 										<f:validateRequired />
 										<f:validateDoubleRange minimum="1.0" />
@@ -55,19 +58,21 @@
 							<h:panelGrid columns="3">								
 								<h:outputLabel value="#{msg['editCampaign.name']}" />
 								<p:inputText id="b_name"
-											 value="#{campaignProducer.selectedCampaign.account.name}">
+											 value="#{campaignProducer.selectedCampaign.account.name}"
+											 placeholder="#{msg['editCampaign.bank_account_name']}">
 									<f:validateRequired />
 								</p:inputText>
 								<p:message for="b_name" style="color: red;" />
 								
 								<h:outputLabel value="#{msg['editCampaign.iban']}:" />
-								<p:inputText id="b_iban" value="#{campaignProducer.selectedCampaign.account.iban}">
+								<p:inputText id="b_iban" placeholder="#{msg['editCampaign.iban_text']}" value="#{campaignProducer.selectedCampaign.account.iban}">
 									<f:validateRequired />
 								</p:inputText>
 								<p:message for="b_iban" style="color: red;" />
 								
 								<h:outputLabel value="#{msg['editCampaign.name_of_bank']}" />
 								<p:inputText id="b_name_bank"
+											 placeholder="#{msg['editCampaign.name_of_bank']}"
 											 value="#{campaignProducer.selectedCampaign.account.nameOfBank}">
 									<f:validateRequired />
 								</p:inputText>
