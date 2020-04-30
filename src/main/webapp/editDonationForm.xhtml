@@ -19,7 +19,7 @@
 							<h:outputLabel value="#{msg['editDonationForm.form_url']}:" />
 							<p:inputTextarea id="url" rows="6" cols="30" readonly="true" value="#{editDonationFormController.url}" />
 						</h:panelGrid>
-						<p:commandButton value="Update URL" update="url"></p:commandButton>
+						<p:commandButton value="#{msg['editDonationForm.button_url']}" update="url"></p:commandButton>
 						<p:commandButton value="OK" action="#{editDonationFormController.doOk}" ajax="false"/>
 					</h:form>
 				</ui:define>
