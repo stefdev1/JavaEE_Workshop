@@ -54,7 +54,7 @@
 							<h:outputText value="#{msg['listDonations.status.IN_PROCESS']}" rendered="#{donation.status=='IN_PROCESS'}" />
 						</p:column>
 					</p:dataTable>
-					<p:commandButton value="Ok" action="#{listDonationsController.doOk}" />
+					<p:commandButton value="Ok" ajax="false" action="#{listDonationsController.doOk}" />
 				</h:form>
 			</ui:define>
 		</ui:composition>

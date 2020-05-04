@@ -22,7 +22,7 @@
 				font-size: 0.9em;
 				background-color: ##{donateMoneyController.bgColor};
 				color: ##{donateMoneyController.textColor}" >
-		<h1>#{msg['donateMoney.donate_money']}:</h1>
+		<h1>#{msg['donateMoney.donate_money']}</h1>
 		<p:messages globalOnly="true" />
 		<p:message for="bgColor" style="color: red;" />
 		<p:message for="textColor" style="color: red;" />
@@ -57,7 +57,7 @@
 			<p:selectBooleanCheckbox value="#{donateMoneyController.donation.receiptRequested}" />
 			#{msg['donateMoney.i_want_a_receipt']}
 			<br />
-			<p:commandButton value="#{msg['donateMoney.donate']}" action="#{donateMoneyController.doDonation}" />
+			<p:commandButton value="#{msg['donateMoney.donate']}" ajax="false" action="#{donateMoneyController.doDonation}" />
 		</h:form>
 	
 	</h:body>
