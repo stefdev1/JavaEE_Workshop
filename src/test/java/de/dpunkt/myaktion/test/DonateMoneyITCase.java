@@ -30,13 +30,13 @@ public class DonateMoneyITCase extends AbstractITCase{
 	
 	@Test
 	public void testDonateMoney(@InitialPage ListCampaignsPage listCampaignsPage) {
-		listCampaignsPage.clickCampaignUrl();
-		editDonationFormPage.assertOnPage();
-		browser.get(editDonationFormPage.getFormUrl());
-		donateMoneyPage.assertOnPage();
-		donateMoneyPage.setDonataion(DataFactory.createDonataion());
-		donateMoneyPage.doDonation();
+		SetupDatabase.addDonation(DataFactory.createDonation());
 		donateMoneyPage.assertThankYou();
+	}
+	
+	@Test
+	public void getCampaign() {
+		
 	}
 
 }
