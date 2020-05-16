@@ -1,7 +1,6 @@
 package de.dpunkt.myaktion.data;
 
 import java.io.Serializable;
-import java.util.Random;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -38,8 +37,6 @@ public class CampaignProducer implements Serializable{
 	
 	public void prepareAddCampaign() {
 		this.campaign = new Campaign();
-		Random randomNumber = new Random();		
-		campaign.setId(randomNumber.nextLong());
 		this.mode = Mode.ADD;
 	}
 	

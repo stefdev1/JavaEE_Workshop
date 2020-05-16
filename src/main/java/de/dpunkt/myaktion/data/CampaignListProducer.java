@@ -68,24 +68,5 @@ public class CampaignListProducer implements Serializable{
 		ret.add(campaign2);
 		return ret;
 	}
-	
-	public Campaign getCampaignById(Long id) {
-		for(Campaign campaign : campaigns) {
-			if(id.compareTo(campaign.getId()) == 0) {
-				return campaign;
-			}
-		}
-		
-		return null;
-	}
-
-	public void addDonation(Long campaignId, Donation donation) {
-		Campaign campaign = getCampaignById(campaignId);
-		campaign.getDonations().add(donation);
-		Double donatedsoFar = campaign.getAmountDonatedSoFar();
-		Double newDonationAmount = donatedsoFar+ donation.getAmount();
-		campaign.setAmountDonatedSoFar(newDonationAmount);
-		
-	}
 
 }

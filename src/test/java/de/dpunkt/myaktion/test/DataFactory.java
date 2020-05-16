@@ -15,7 +15,7 @@ public class DataFactory {
 		return campaign;
 	}
 	
-	public static Donation createDonation() {
+	public static Donation createDonataion() {
 		Donation donation = new Donation();
 		donation.setDonarName("Heinz Schmidt");
 		donation.setAmount(20d);
