@@ -6,8 +6,10 @@ import java.util.ResourceBundle;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
+import de.dpunkt.myaktion.data.CampaignListProducer;
 import de.dpunkt.myaktion.model.Donation;
 
 @SessionScoped
@@ -18,6 +20,9 @@ public class DonateMoneyController implements Serializable{
 	private String bgColor = "ffffff";
 	private Long campaignId;
 	private Donation donation;
+	
+	@Inject
+	private CampaignListProducer campaignListProducer;
 	
 	public DonateMoneyController() {
 		this.setDonation(new Donation());
@@ -56,6 +61,7 @@ public class DonateMoneyController implements Serializable{
 	}
 	
 	public String doDonation() {
+		campaignListProducer.addDonation(campaignId, donation);
 		final FacesContext facesContext = FacesContext.getCurrentInstance();
 		final ResourceBundle resourceBundle = facesContext.getApplication().getResourceBundle(facesContext, "msg");
 		final String msg = resourceBundle.getString("donateMoney.thank_you");

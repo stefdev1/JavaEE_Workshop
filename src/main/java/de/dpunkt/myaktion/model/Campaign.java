@@ -1,5 +1,6 @@
 package de.dpunkt.myaktion.model;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Campaign {
@@ -13,6 +14,8 @@ public class Campaign {
 	
 	public Campaign() {
 		setAccount(new Account());
+		setDonations(new LinkedList<Donation>());
+		amountDonatedSoFar = 0.0;
 	}
 
 	public String getName() {
