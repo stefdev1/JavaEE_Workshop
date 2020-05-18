@@ -1,6 +1,7 @@
 package de.dpunkt.myaktion.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -8,6 +9,7 @@ import javax.inject.Named;
 
 import de.dpunkt.myaktion.data.CampaignListProducer;
 import de.dpunkt.myaktion.data.CampaignProducer;
+import de.dpunkt.myaktion.model.Campaign;
 
 @SessionScoped
 @Named

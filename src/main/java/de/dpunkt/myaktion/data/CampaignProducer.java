@@ -3,12 +3,12 @@ package de.dpunkt.myaktion.data;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
+import javax.enterprise.inject.Produces;
 import javax.inject.Named;
 
 import de.dpunkt.myaktion.model.Campaign;
 
 @SessionScoped
-@Named
 public class CampaignProducer implements Serializable{
 	
 	/**
@@ -23,6 +23,8 @@ public class CampaignProducer implements Serializable{
 	private Campaign campaign;
 	private Mode mode;
 	
+	@Produces
+	@Named
 	public Campaign getSelectedCampaign() {
 		return campaign;
 	}
@@ -31,6 +33,8 @@ public class CampaignProducer implements Serializable{
 		this.campaign = campaign;
 	}
 	
+	@Produces
+	@Named
 	public boolean isAddMode() {
 		return mode == Mode.ADD;
 	}
