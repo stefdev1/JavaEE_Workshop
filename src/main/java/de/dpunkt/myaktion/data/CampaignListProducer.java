@@ -3,6 +3,8 @@ package de.dpunkt.myaktion.data;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -18,6 +20,8 @@ import de.dpunkt.myaktion.model.Donation.Status;
 import de.dpunkt.myaktion.services.CampaignService;
 import de.dpunkt.myaktion.util.Events.Added;
 import de.dpunkt.myaktion.util.Events.Deleted;
+import de.dpunkt.myaktion.util.Events.Updated;
+import de.dpunkt.myaktion.util.LogQualifier.FachLog;
 
 @SessionScoped
 public class CampaignListProducer implements Serializable{
@@ -30,6 +34,9 @@ public class CampaignListProducer implements Serializable{
 	
 	@Inject 
 	private CampaignService campaignService;
+	
+	@Inject @FachLog
+	private Logger fachLogger;
 	
 	@PostConstruct
 	public void init() {
@@ -48,6 +55,10 @@ public class CampaignListProducer implements Serializable{
 	
 	public void onCampaignDeleted(@Observes @Deleted Campaign campaign) {
 		getCampaigns().remove(campaign);
+	}
+	
+	public void onCampaingUpdate(@Observes @Updated Campaign campaing) {
+		fachLogger.log(Level.INFO, "Camapign with name {0} was updated.", new Object[]{campaing.getName()});
 	}
 	
 	public List<Campaign> createMockCampaigns() {
