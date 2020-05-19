@@ -18,6 +18,7 @@ import de.dpunkt.myaktion.model.Donation.Status;
 import de.dpunkt.myaktion.services.CampaignService;
 import de.dpunkt.myaktion.util.Events.Added;
 import de.dpunkt.myaktion.util.Events.Deleted;
+import de.dpunkt.myaktion.util.TestQualifier.MyService;
 
 @SessionScoped
 public class CampaignListProducer implements Serializable{
@@ -28,8 +29,8 @@ public class CampaignListProducer implements Serializable{
 	private static final long serialVersionUID = -6181792934119987061L;
 	private List<Campaign> campaigns;
 	
-	@Inject 
-	public CampaignService campaignService;
+	@Inject @MyService
+	private CampaignService campaignService;
 	
 	@PostConstruct
 	public void init() {
