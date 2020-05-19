@@ -2,21 +2,29 @@ package de.dpunkt.myaktion.services;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Alternative;
+import javax.inject.Inject;
 
 import de.dpunkt.myaktion.model.Account;
 import de.dpunkt.myaktion.model.Campaign;
 import de.dpunkt.myaktion.model.Donation;
 import de.dpunkt.myaktion.model.Donation.Status;
+import de.dpunkt.myaktion.util.LogQualifier.TecLog;
 
 @RequestScoped
 @Alternative
 public class MockCampaignServiceBean implements CampaignService {
 
+	@Inject @TecLog
+	private Logger techLogger;
+	
 	@Override
 	public List<Campaign> getAllCampaigns() {
+		techLogger.log(Level.INFO, "Get all campaigns...");
 		Donation donation1= new Donation();
 		donation1.setDonarName("Heinz Schmidt");
 		donation1.setAmount(20d);

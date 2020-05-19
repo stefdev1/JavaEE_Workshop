@@ -13,6 +13,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import de.dpunkt.myaktion.model.Donation;
+import de.dpunkt.myaktion.util.LogQualifier.FachLog;
+import de.dpunkt.myaktion.util.LogQualifier.TecLog;
 
 @SessionScoped
 @Named
@@ -21,8 +23,11 @@ public class DonateMoneyController implements Serializable{
 	@Inject
 	private FacesContext facesContext;
 	
-	@Inject
-	private Logger logger;
+	@Inject @FachLog
+	private Logger fachLogger;
+	
+	@Inject @TecLog
+	private Logger techLogger;
 	
 	private String textColor = "000000";
 	private String bgColor = "ffffff";
@@ -68,7 +73,8 @@ public class DonateMoneyController implements Serializable{
 	}
 	
 	public String doDonation() {
-		logger.log(Level.INFO, "log.donateMoney.thank_you", new Object[] {getDonation().getDonarName(), getDonation().getAmount()});
+		techLogger.log(Level.INFO, "New Donation");
+		fachLogger.log(Level.INFO, "log.donateMoney.thank_you", new Object[] {getDonation().getDonarName(), getDonation().getAmount()});
 		final ResourceBundle resourceBundle = facesContext.getApplication().getResourceBundle(facesContext, "msg");
 		final String msg = resourceBundle.getString("donateMoney.thank_you");
 		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, msg, null));
