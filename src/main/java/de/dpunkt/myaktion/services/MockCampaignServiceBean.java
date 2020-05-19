@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Alternative;
 
 import de.dpunkt.myaktion.model.Account;
 import de.dpunkt.myaktion.model.Campaign;
@@ -11,11 +12,11 @@ import de.dpunkt.myaktion.model.Donation;
 import de.dpunkt.myaktion.model.Donation.Status;
 
 @RequestScoped
+@Alternative
 public class MockCampaignServiceBean implements CampaignService {
 
 	@Override
 	public List<Campaign> getAllCampaigns() {
-		System.out.println("Called MockCampaignServiceBean");
 		Donation donation1= new Donation();
 		donation1.setDonarName("Heinz Schmidt");
 		donation1.setAmount(20d);

@@ -29,7 +29,7 @@ public class CampaignListProducer implements Serializable{
 	private List<Campaign> campaigns;
 	
 	@Inject 
-	public CampaignService campaignService;
+	private CampaignService campaignService;
 	
 	@PostConstruct
 	public void init() {
