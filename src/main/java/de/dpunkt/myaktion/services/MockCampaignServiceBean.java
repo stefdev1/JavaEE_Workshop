@@ -1,56 +1,21 @@
-package de.dpunkt.myaktion.data;
+package de.dpunkt.myaktion.services;
 
-import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
-import javax.enterprise.event.Observes;
-import javax.enterprise.inject.Produces;
-import javax.inject.Inject;
-import javax.inject.Named;
+import javax.enterprise.context.RequestScoped;
 
 import de.dpunkt.myaktion.model.Account;
 import de.dpunkt.myaktion.model.Campaign;
 import de.dpunkt.myaktion.model.Donation;
 import de.dpunkt.myaktion.model.Donation.Status;
-import de.dpunkt.myaktion.services.CampaignService;
-import de.dpunkt.myaktion.util.Events.Added;
-import de.dpunkt.myaktion.util.Events.Deleted;
 
-@SessionScoped
-public class CampaignListProducer implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -6181792934119987061L;
-	private List<Campaign> campaigns;
-	
-	@Inject 
-	public CampaignService campaignService;
-	
-	@PostConstruct
-	public void init() {
-		campaigns = campaignService.getAllCampaigns();
-	}
-	
-	@Produces
-	@Named
-	public List<Campaign> getCampaigns() {
-		return campaigns;
-	}
-	
-	public void onCampaignAdded(@Observes @Added Campaign campaign) {
-		getCampaigns().add(campaign);
-	}
-	
-	public void onCampaignDeleted(@Observes @Deleted Campaign campaign) {
-		getCampaigns().remove(campaign);
-	}
-	
-	public List<Campaign> createMockCampaigns() {
+@RequestScoped
+public class MockCampaignServiceBean implements CampaignService {
+
+	@Override
+	public List<Campaign> getAllCampaigns() {
+		System.out.println("Called MockCampaignServiceBean");
 		Donation donation1= new Donation();
 		donation1.setDonarName("Heinz Schmidt");
 		donation1.setAmount(20d);
@@ -92,5 +57,8 @@ public class CampaignListProducer implements Serializable{
 		ret.add(campaign2);
 		return ret;
 	}
+	
+	
+	
 
 }
