@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import de.dpunkt.myaktion.model.Campaign;
 import de.dpunkt.myaktion.model.Donation;
@@ -18,7 +19,9 @@ public class DonationServiceBean implements DonationService{
 	@Override
 	public List<Donation> getDonationList(Long campaignId) {
 		Campaign managedCampaign = entityManager.find(Campaign.class, campaignId);
-		List<Donation> donations= managedCampaign.getDonations();
+		TypedQuery<Donation> donationQuery = entityManager.createNamedQuery(Campaign.getDonations, Donation.class);
+		donationQuery.setParameter("campaign", managedCampaign);
+		List<Donation> donations= donationQuery.getResultList();
 		donations.size();
 		return donations;
 	}

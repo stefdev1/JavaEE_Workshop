@@ -17,13 +17,15 @@ import javax.persistence.Transient;
 
 @Entity
 @NamedQueries({@NamedQuery(name = Campaign.findAll, query = "SELECT c FROM Campaign c ORDER BY c.name"),
-			   @NamedQuery(name = Campaign.getAmountDonatedSoFar, query = "SELECT SUM(d.amount) FROM Donation d WHERE d.campaign = :campaign")
+			   @NamedQuery(name = Campaign.getAmountDonatedSoFar, query = "SELECT SUM(d.amount) FROM Donation d WHERE d.campaign = :campaign"),
+			   @NamedQuery(name = Campaign.getDonations, query = "SELECT d FROM Donation d WHERE d.campaign = :campaign")
 	})
 
 public class Campaign {
 	
 	public static final String findAll = "Campaign.findAll";
 	public static final String getAmountDonatedSoFar = "Campaign.getAmountDonatedSoFar";
+	public static final String getDonations = "Campaign.getDonations";
 	
 	@GeneratedValue
 	@Id
