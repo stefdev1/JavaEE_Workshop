@@ -60,7 +60,6 @@ public class ListCampaignsController implements Serializable{
 	
 	public void commitDeleteCamapign() {
 		campaignDeleteEvent.fire(campaignToDelete);
-		System.out.println("Deletion of campaign, not yet implemented!");
 	}
 	
 
