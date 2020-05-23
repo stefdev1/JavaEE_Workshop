@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Donation {
@@ -19,9 +22,18 @@ public class Donation {
 	@Embedded
 	private Account account;
 	
+	@NotNull(message = "{donation.amount.notNull}")
+	@DecimalMin(value = "1.00", message = "{donation.amount.decimalMin}")
 	private Double amount;
+	
+	@NotNull
+	@Size(min = 4, max = 40, message = "{donation.donarName.size}")
 	private String donarName;
+	
+	@NotNull
 	private Boolean receiptRequested;
+	
+	@NotNull
 	private Status status;
 	
 	public enum Status {
