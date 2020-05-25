@@ -14,7 +14,7 @@ import org.openqa.selenium.support.FindBy;
 
 import de.dpunkt.myaktion.test.Config;
 
-@Location(Config.TEST_WEB_ARCHIVE + "/listCampaigns.jsf")
+@Location("listCampaigns.jsf")
 public class ListCampaignsPage extends AbstractPage{
 	
 	@FindBy(xpath="//tbody/tr[last()]/td[2]")

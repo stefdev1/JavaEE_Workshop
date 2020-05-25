@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 import de.dpunkt.myaktion.test.Config;
 
-@Location(Config.TEST_WEB_ARCHIVE + "/editDonationForm.jsf")
+@Location("editDonationForm.jsf")
 public class EditDonationFormPage extends AbstractPage{
 	
 	@FindBy(xpath = "//textarea[contains(@id,'url')]")

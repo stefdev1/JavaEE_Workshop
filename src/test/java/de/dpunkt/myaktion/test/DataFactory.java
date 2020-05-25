@@ -18,7 +18,7 @@ public class DataFactory {
 	public static Donation createDonation() {
 		Donation donation = new Donation();
 		donation.setDonarName("Heinz Schmidt");
-		donation.setAmount(20d);
+		donation.setAmount(742d);
 		donation.setReceiptRequested(true);
 		donation.setStatus(Status.TRANSFERRED);
 		donation.setAccount(new Account(donation.getDonarName(), "XXX Bank", "DE4487653210000123456"));

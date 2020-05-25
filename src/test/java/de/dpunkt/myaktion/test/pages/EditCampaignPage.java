@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import de.dpunkt.myaktion.model.Campaign;
 import de.dpunkt.myaktion.test.Config;
 
-@Location(Config.TEST_WEB_ARCHIVE + "/editCampaign.jsf")
+@Location("editCampaign.jsf")
 public class EditCampaignPage extends AbstractPage{
 	
 	@FindBy(xpath = "//input[contains(@id,'a_name')]")

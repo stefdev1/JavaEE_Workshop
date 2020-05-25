@@ -39,17 +39,21 @@ public class ListCampaignsITCase extends AbstractITCase{
 	
 	@Test
 	public void testAddDonationToCampaign(@InitialPage ListCampaignsPage listCampaignsPage) {
+		SetupDatabase.addCampaign(DataFactory.createTestCampaign());
 		listCampaignsPage.assertOnPage();
 		Double amountDonatedSoFarStart = listCampaignsPage.getAmountDonatedSoFar();
 		Donation donation = DataFactory.createDonation();
 		SetupDatabase.addDonation(donation);
 		listCampaignsPage = Graphene.goTo(ListCampaignsPage.class);
 		
-		//TODO:remove after setting implementing doDonation method.
-		expectWrongAssumtion.expect(AssertionError.class);
-		expectWrongAssumtion.expectMessage("expected:<762.0> but was:<742.0>");
-		
 		assertEquals(amountDonatedSoFarStart + donation.getAmount(), listCampaignsPage.getAmountDonatedSoFar(), 0.01);
+		
+		SetupDatabase.addDonation(donation);
+		listCampaignsPage = Graphene.goTo(ListCampaignsPage.class);
+		assertEquals(2 * donation.getAmount(), listCampaignsPage.getAmountDonatedSoFar(), 0.01);
+
+
+	
 	}
 	
 

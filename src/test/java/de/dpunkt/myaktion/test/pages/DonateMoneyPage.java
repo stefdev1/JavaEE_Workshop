@@ -12,7 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import de.dpunkt.myaktion.model.Donation;
 import de.dpunkt.myaktion.test.Config;
 
-@Location(Config.TEST_WEB_ARCHIVE + "/donateMoney.jsf")
+@Location("donateMoney.jsf")
 public class DonateMoneyPage extends AbstractPage{
 	
 	@FindBy(xpath = "//input[contains(@id,'name')]")
