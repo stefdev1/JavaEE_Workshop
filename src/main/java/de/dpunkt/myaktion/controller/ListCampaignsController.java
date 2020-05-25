@@ -47,8 +47,8 @@ public class ListCampaignsController implements Serializable{
 	}
 	
 	public String doListDonations(Campaign campaign) {
-		final List<Donation> donations = donationService.getDonationList(campaign.getId());
-		campaign.setDonations(donations);
+		//final List<Donation> donations = donationService.getDonationList(campaign.getId());
+		//campaign.setDonations(donations);
 		campaignProducer.setSelectedCampaign(campaign);
 		return Pages.LIST_DONATIONS;
 	}
