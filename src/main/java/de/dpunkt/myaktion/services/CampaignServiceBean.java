@@ -6,6 +6,9 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import de.dpunkt.myaktion.model.Campaign;
 
@@ -17,7 +20,13 @@ public class CampaignServiceBean implements CampaignService{
 	
 	@Override
 	public List<Campaign> getAllCampaigns() {
-		TypedQuery<Campaign> query = entityManager.createNamedQuery(Campaign.findAll, Campaign.class);
+		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Campaign> critera = cb.createQuery(Campaign.class);
+		Root<Campaign> campaignRoot = critera.from(Campaign.class);
+		critera.select(campaignRoot).orderBy(cb.asc(campaignRoot.get("name")));
+		TypedQuery<Campaign> query = entityManager.createQuery(critera);
+		
+		//TypedQuery<Campaign> query = entityManager.createNamedQuery(Campaign.findAll, Campaign.class);
 		List<Campaign> campaigns = query.getResultList();
 		campaigns.forEach(campaign -> campaign.setAmountDonatedSoFar(getAmountDonatedSoFar(campaign)));
 		
