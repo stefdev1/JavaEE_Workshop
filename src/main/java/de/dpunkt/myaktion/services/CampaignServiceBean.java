@@ -3,12 +3,14 @@ package de.dpunkt.myaktion.services;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import de.dpunkt.myaktion.model.Campaign;
 
+@Alternative
 @Stateless
 public class CampaignServiceBean implements CampaignService{
 
