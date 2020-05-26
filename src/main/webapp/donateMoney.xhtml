@@ -22,13 +22,17 @@
 				font-size: 0.9em;
 				background-color: ##{donateMoneyController.bgColor};
 				color: ##{donateMoneyController.textColor}" >
-		<h1>#{msg['donateMoney.donate_money']}</h1>
+		<h1>#{msg['donateMoney.donate_money']} 		<h:outputLabel value="#{donateMoneyController.donation.campaign.name}" />
+		</h1>
+		<h:outputLabel id="donationAmountAlarm" />
+	
+		
 		<p:messages globalOnly="true" />
 		<p:message for="bgColor" style="color: red;" />
 		<p:message for="textColor" style="color: red;" />
 		<p:message for="campaignId" style="color: red;" />
 		
-		<h:form>
+		<h:form id="donationForm">
 			<h:panelGrid columns="3">
 				<h:outputLabel value="#{msg['donateMoney.name']}:" />
 				<p:inputText id="name" value="#{donateMoneyController.donation.donarName}">

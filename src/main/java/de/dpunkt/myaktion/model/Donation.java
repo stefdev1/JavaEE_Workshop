@@ -9,6 +9,8 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import de.dpunkt.myaktion.util.DonationSoFarConstraintAnnotation;
+
 @Entity
 public class Donation {
 	
