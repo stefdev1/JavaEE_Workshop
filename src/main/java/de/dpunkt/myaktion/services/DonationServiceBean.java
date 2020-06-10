@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
+import de.dpunkt.myaktion.BusinessException.DontionAmountValidationException;
 import de.dpunkt.myaktion.model.Campaign;
 import de.dpunkt.myaktion.model.Donation;
 
@@ -24,10 +25,17 @@ public class DonationServiceBean implements DonationService{
 	}
 
 	@Override
-	public void addDonation(Long campaignId, Donation donation) {
+	public void addDonation(Long campaignId, Donation donation) throws Exception {
 		Campaign managedCampaign = entityManager.find(Campaign.class, campaignId);
+		if(donation.getAmount() < managedCampaign.getDonationMinimum()) {
+			throw new DontionAmountValidationException(managedCampaign.getDonationMinimum().toString());
+		}
 		donation.setCampaign(managedCampaign);
 		entityManager.persist(donation);		
+	}
+	
+	public Campaign loadCampaign(Long campaignId) {
+		return entityManager.find(Campaign.class, campaignId);
 	}
 
 }

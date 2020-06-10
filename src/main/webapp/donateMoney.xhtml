@@ -28,7 +28,7 @@
 		<p:message for="textColor" style="color: red;" />
 		<p:message for="campaignId" style="color: red;" />
 		
-		<h:form>
+		<h:form id="donationForm">
 			<h:panelGrid columns="3">
 				<h:outputLabel value="#{msg['donateMoney.name']}:" />
 				<p:inputText id="name" value="#{donateMoneyController.donation.donarName}">
