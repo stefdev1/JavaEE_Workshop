@@ -50,6 +50,13 @@ public class ListCampaignsController implements Serializable{
 		final List<Donation> donations = donationService.getDonationList(campaign.getId());
 		campaign.setDonations(donations);
 		campaignProducer.setSelectedCampaign(campaign);
+		if(campaign.getCreatedAt() == null)  {
+			System.out.println("Campaign created is null ");
+
+		}
+		else {
+			System.out.println("Campaign created: " + campaign.getCreatedAt().toString());
+		}
 		return Pages.LIST_DONATIONS;
 	}
 	

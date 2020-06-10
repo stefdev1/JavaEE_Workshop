@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -18,13 +19,16 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import de.dpunkt.myaktion.Listner.DateEntityListner;
+
 
 @Entity
+@EntityListeners(DateEntityListner.class)
 @NamedQueries({@NamedQuery(name = Campaign.findAll, query = "SELECT c FROM Campaign c ORDER BY c.name"),
 			   @NamedQuery(name = Campaign.getAmountDonatedSoFar, query = "SELECT SUM(d.amount) FROM Donation d WHERE d.campaign = :campaign")
 	})
 
-public class Campaign {
+public class Campaign  extends DateEntitiy{
 	
 	public static final String findAll = "Campaign.findAll";
 	public static final String getAmountDonatedSoFar = "Campaign.getAmountDonatedSoFar";

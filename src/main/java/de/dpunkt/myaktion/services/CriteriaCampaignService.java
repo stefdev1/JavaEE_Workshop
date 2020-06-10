@@ -3,6 +3,7 @@ package de.dpunkt.myaktion.services;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -15,6 +16,7 @@ import de.dpunkt.myaktion.model.Campaign;
 import de.dpunkt.myaktion.model.Donation;
 
 @Stateless
+@Alternative
 public class CriteriaCampaignService implements CampaignService{
 
 	@Inject
@@ -69,7 +71,9 @@ public class CriteriaCampaignService implements CampaignService{
 		TypedQuery<Double> query = entityManager.createQuery(criteria);
 		query.setParameter(paramterCampaign, campaign);
 		Double amountDonatedSoFar = query.getSingleResult();
-		
+		if(amountDonatedSoFar == null) {
+			amountDonatedSoFar = 0d;
+		}
 		return amountDonatedSoFar;
 	}
 

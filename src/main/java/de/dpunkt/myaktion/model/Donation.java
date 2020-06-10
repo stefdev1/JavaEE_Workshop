@@ -2,6 +2,7 @@ package de.dpunkt.myaktion.model;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -9,8 +10,11 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import de.dpunkt.myaktion.Listner.DateEntityListner;
+
 @Entity
-public class Donation {
+@EntityListeners(DateEntityListner.class)
+public class Donation extends DateEntitiy{
 	
 	@GeneratedValue
 	@Id

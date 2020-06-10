@@ -10,7 +10,6 @@ import javax.persistence.TypedQuery;
 
 import de.dpunkt.myaktion.model.Campaign;
 
-@Alternative
 @Stateless
 public class CampaignServiceBean implements CampaignService{
 
