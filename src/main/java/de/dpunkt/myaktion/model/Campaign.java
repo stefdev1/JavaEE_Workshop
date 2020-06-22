@@ -10,6 +10,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -21,12 +22,14 @@ import javax.validation.constraints.Size;
 
 @Entity
 @NamedQueries({@NamedQuery(name = Campaign.findAll, query = "SELECT c FROM Campaign c ORDER BY c.name"),
+			   @NamedQuery(name = Campaign.findByOrganizer, query ="SELECT c FROM Campaign c WHERE c.organizer = :organizer ORDER BY c.name"),
 			   @NamedQuery(name = Campaign.getAmountDonatedSoFar, query = "SELECT SUM(d.amount) FROM Donation d WHERE d.campaign = :campaign")
 	})
 
 public class Campaign {
 	
 	public static final String findAll = "Campaign.findAll";
+	public static final String findByOrganizer = "Campaign.findByOrganizer";
 	public static final String getAmountDonatedSoFar = "Campaign.getAmountDonatedSoFar";
 	
 	@GeneratedValue
@@ -35,6 +38,9 @@ public class Campaign {
 
 	@OneToMany(mappedBy = "campaign", cascade = CascadeType.REMOVE)
 	private List<Donation> donations;
+	
+	@ManyToOne
+	private Organizer organizer;
 
 	@Embedded
 	@AttributeOverrides({@AttributeOverride(name = "name", column = @Column(name = "accountName"))})
@@ -113,6 +119,14 @@ public class Campaign {
 
 	public void setDonations(List<Donation> donations) {
 		this.donations = donations;
+	}
+
+	public Organizer getOrganizer() {
+		return organizer;
+	}
+
+	public void setOrganizer(Organizer organizer) {
+		this.organizer = organizer;
 	}
 	
 	
